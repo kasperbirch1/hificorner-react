@@ -6,7 +6,7 @@ export const StyledSection = styled.section`
     
     svg {
         margin: 0 1rem;
-        font-size: 8rem;
+        font-size: 6rem;
         cursor: pointer;
         :hover {
             color: #a39161;

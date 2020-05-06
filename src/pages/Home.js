@@ -22,10 +22,12 @@ const Home = () => {
                     <StyledLogoXL src={Logo} alt="Logo" />
                 </Wrapper>
             </Header>
-            <ProductSlider />
-            <Hero quote="KNOWLEDGE SPEAKS, BUT WISDOM LISTENS." author="JIMI HENDRIX" img={HeroImg} />
-            <SocialMedia />
-            <FrontpageInfoColumns />
+            <main>
+                <ProductSlider />
+                <Hero quote="KNOWLEDGE SPEAKS, BUT WISDOM LISTENS." author="JIMI HENDRIX" img={HeroImg} />
+                <SocialMedia />
+                <FrontpageInfoColumns />
+            </main>
             <Footer />
         </>
     )
