@@ -1,4 +1,5 @@
 import React from 'react';
+import { GlobalProvider } from './context/GlobalState';
 import { Router } from "@reach/router";
 import Home from './pages/Home'
 import Blog from './pages/Blog';
@@ -8,15 +9,17 @@ import Shop from './pages/Shop';
 
 function App() {
   return (
-    <div className="App">
+    <GlobalProvider>
       <Router>
         <Home path="/" />
-        <Categories path="/categories" />
-        <Shop path="/shop" />
-        <Blog path="/blog" />
-        <About path="/about" />
+        <Categories path="categories" />
+        <Shop path="shop" />
+        <Shop path="shop/:slug" />
+        <Blog path="blog" />
+        <Blog path="blog/:sku" />
+        <About path="about" />
       </Router>
-    </div>
+    </GlobalProvider>
   );
 }
 

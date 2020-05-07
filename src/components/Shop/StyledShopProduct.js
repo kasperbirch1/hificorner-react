@@ -37,12 +37,12 @@ const StyledShopProduct = styled.article`
     }
 `;
 
-export const ShopProduct = ({ img, make, model, price }) => {
+export const ShopProduct = ({ img, make, model, price, sku }) => {
     return (<StyledShopProduct>
         <img src={img} alt="" />
         <h2>{make}</h2>
         <h3>{model}</h3>
         <p>{price}</p>
-        <Link to="/">See more..</Link>
-    </StyledShopProduct>);
+        <Link to={`../blog/${sku}`}>See more..</Link>
+    </StyledShopProduct >);
 };

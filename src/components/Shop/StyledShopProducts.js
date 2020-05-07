@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+
 // import placeholderImg from '../../images/product-placeholder.png'
 import { ShopProduct } from './StyledShopProduct';
 
@@ -14,7 +15,7 @@ export const ShopProducts = ({ data }) => {
         <StyledShopProducts>
             {data.map((element, index) => {
                 return (
-                    < ShopProduct key={index} make={element.make} model={element.model} price={element.price} img={element.images[0]} />
+                    < ShopProduct key={index} make={element.make} model={element.model} price={element.price} img={element.images[0]} sku={element.sku} />
                 )
             })}
         </StyledShopProducts>

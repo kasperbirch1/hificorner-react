@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from "@reach/router";
 import styled from 'styled-components';
+import slugify from 'react-slugify';
+
 /* */
 const StyledShopNav = styled.nav`
     background-color: #f3f3f3;
@@ -33,7 +35,7 @@ export const ShopMenu = ({ categories }) => {
                 <li><Link to="/shop">All Categories</Link></li>
                 {categories.map((item, index) => {
                     return (
-                        <li key={index}><Link to="/shop">{item}</Link></li>
+                        <li key={index}><Link to={`../../shop/:${slugify(item)}`}>{item}</Link></li>
                     )
 
                 })}

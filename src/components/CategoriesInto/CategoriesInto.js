@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react'
+import slugify from 'react-slugify';
+
 import styled from 'styled-components'
 import { CategoriesIntoCard } from './StyledCategoriesIntoCard'
 
@@ -29,10 +31,10 @@ const CategoriesInto = () => {
 
     return (
         <StyledCategoriesInto>
-            <CategoriesIntoCard title="Shop By Brand" />
+            <CategoriesIntoCard category="Shop By Brand" slug="/" />
             {Data.map((item, index) => {
                 return (
-                    <CategoriesIntoCard key={index} title={item} />
+                    <CategoriesIntoCard key={index} category={item} slug={slugify(item)} />
                 )
             })}
         </StyledCategoriesInto>

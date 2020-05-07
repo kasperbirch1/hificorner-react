@@ -29,11 +29,11 @@ const StyledCategoriesIntoCard = styled.div`
     }
 
 `;
-export const CategoriesIntoCard = ({ title, url }) => {
+export const CategoriesIntoCard = ({ category, slug }) => {
     return (
         <StyledCategoriesIntoCard style={{ backgroundImage: `url(${backgroundImage})` }}>
-            <Link to={`/shop`}>
-                {title}
+            <Link to={`../shop/${slug}`}>
+                {category}
             </Link>
         </StyledCategoriesIntoCard>
     );
