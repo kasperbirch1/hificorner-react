@@ -13,8 +13,8 @@ function App() {
       <Router>
         <Home path="/" />
         <Categories path="categories" />
-        <Shop path="shop" />
         <Shop path="shop/:slug" />
+        <Shop path="shop" />
         <Blog path="blog" />
         <Blog path="blog/:sku" />
         <About path="about" />

@@ -2,7 +2,6 @@ import React, { createContext, useReducer } from 'react';
 import axios from 'axios';
 import AppReducer from './AppReducer';
 
-
 // Initial state
 const initialState = {
   transactions: [],

@@ -6,10 +6,6 @@ import IconMenu from '../components/Header/IconMenu';
 import CategoriesInto from '../components/CategoriesInto/CategoriesInto'
 import Footer from '../components/Footer/Footer';
 
-
-
-
-
 const Categories = () => {
     return (
         <>

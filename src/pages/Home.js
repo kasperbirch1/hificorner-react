@@ -12,6 +12,7 @@ import ProductSlider from '../components/ProductSlider/ProductSlider';
 import FrontpageInfoColumns from '../components/FrontpageInfoColumns/FrontpageInfoColumns';
 import Footer from '../components/Footer/Footer';
 
+
 const Home = () => {
     return (
         <>

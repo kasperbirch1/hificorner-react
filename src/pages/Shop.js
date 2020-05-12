@@ -7,29 +7,35 @@ import Footer from '../components/Footer/Footer'
 import { ShopMenu } from '../components/Shop/StyledShopNav';
 import { ShopProducts } from '../components/Shop/StyledShopProducts';
 
-const Shop = () => {
+const Shop = (props) => {
     /* useState */
     const [Data, setData] = useState([]);
-    const [UniqueCategories, setUniqueCategories] = useState([])
+    const [Categories, setCategories] = useState([])
+    const [Manufacturers, setManufacturers] = useState([])
+
     /* useEffect */
     useEffect(() => {
-        if (Data.length === 0) {
+        if (true) {
             (async () => {
                 try {
                     const response = await fetch("https://hifi-corner.herokuapp.com/api/v1/products");
                     const result = await response.json();
                     setData(result);
-                    /* UniqueCategories */
+                    /* Unique */
                     const UniqueCategories = getUnique(
                         result.map((item) => item.category)
                     );
-                    setUniqueCategories(UniqueCategories)
+                    setCategories(UniqueCategories)
+                    const UniqueManufacturers = getUnique(
+                        result.map((item) => item.make)
+                    );
+                    setManufacturers(UniqueManufacturers)
                 } catch (e) {
                     console.log(e);
                 }
             })();
         }
-    }, [Data, UniqueCategories]);
+    }, []);
     return (
         <>
             <Header>
@@ -39,8 +45,8 @@ const Shop = () => {
                 </Wrapper>
             </Header>
             <main style={{ display: 'grid', gridTemplateColumns: 'auto 1fr' }}>
-                <ShopMenu categories={UniqueCategories} />
-                <ShopProducts data={Data} />
+                <ShopMenu categories={Categories} manufacturers={Manufacturers} />
+                <ShopProducts data={Data} slug={props.slug} />
             </main>
             <Footer />
         </>

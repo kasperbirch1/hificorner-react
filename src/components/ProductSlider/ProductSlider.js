@@ -1,29 +1,32 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react'
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
-import { StyledSection } from './StyledSection';
-// import placeholderImg from '../../images/product-placeholder.png'
-
+import { ProductSliderItem } from './ProductSliderItem'
+import { StyledSection } from './StyledSection'
 import { ProductSliderContentContainer } from './ProductSliderContentContainer';
-import { ProductSliderItem } from './ProductSliderItem';
+
+
 const ProductSlider = () => {
-    /* useState */
-    const [Data, setData] = useState([]);
+    const [Url] = useState("https://hifi-corner.herokuapp.com/api/v1/products")
     const [Current, setCurrent] = useState(0)
-    /* useEffect */
+    const [error, setError] = useState(null);
+    const [isLoaded, setIsLoaded] = useState(false);
+    const [Data, setData] = useState([]);
+
     useEffect(() => {
-        if (Data.length === 0) {
-            (async () => {
-                try {
-                    const response = await fetch("https://hifi-corner.herokuapp.com/api/v1/products");
-                    const result = await response.json();
-                    console.log("fetch Result", result);
-                    setData(result);
-                } catch (e) {
-                    console.log(e);
+        fetch(Url)
+            .then(res => res.json())
+            .then((result) => {
+                console.log("ProductSliderFetch", result);
+                setIsLoaded(true);
+                setData(result);
+            },
+                (error) => {
+                    setIsLoaded(true);
+                    setError(error);
                 }
-            })();
-        }
-    }, [Data]);
+            )
+    }, [Url])
+
     /* new array with React elements */
     const products = Data.map((element, index) => {
         return (
@@ -48,19 +51,24 @@ const ProductSlider = () => {
         }
     }
 
-
-    return (
-        <StyledSection>
-            <FaAngleLeft onClick={e => handleCurrent(e)} />
-            <ProductSliderContentContainer>
-                {products[Current]}
-            </ProductSliderContentContainer>
-            <FaAngleRight type="next" onClick={e => handleCurrent(e)} />
-        </StyledSection>
-    )
+    if (error) {
+        return <div>Error: {error.message}</div>;
+    } else if (!isLoaded) {
+        return <div style={{ display: 'grid', placeContent: 'center', padding: '5rem' }}>Loading...</div>
+    } else {
+        return (
+            <StyledSection>
+                <FaAngleLeft onClick={e => handleCurrent(e)} />
+                <ProductSliderContentContainer>
+                    {products[Current]}
+                </ProductSliderContentContainer>
+                <FaAngleRight type="next" onClick={e => handleCurrent(e)} />
+            </StyledSection>
+        )
+    }
 }
 
+
+
+
 export default ProductSlider
-
-
-
