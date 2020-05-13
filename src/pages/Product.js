@@ -6,6 +6,7 @@ import Header from "../components/Header/Header"
 import Wrapper from '../components/Recycling/Wrapper';
 import MainMenu from "../components/Header/MainMenu";
 import IconMenu from '../components/Header/IconMenu';
+import Footer from '../components/Footer/Footer'
 
 const Product = ({ sku }) => {
     const [Url] = useState(`https://hifi-corner.herokuapp.com/api/v1/products/${sku}`)
@@ -39,24 +40,35 @@ const Product = ({ sku }) => {
                         <MainMenu />
                     </Wrapper>
                 </Header>
-                <main style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)' }}>
-                    <div style={{ margin: '2rem 1rem' }}>
+                <StyledMainContainer>
+                    <section>
                         <img src={Data.images} alt={Data.make} />
-                    </div>
-                    <div style={{ backgroundColor: '#f3f3f3', padding: '1rem', margin: '2rem 1rem' }}>
-                        <h1>{Data.model}</h1>
-                        <h2>{Data.make}</h2>
-                        <h2 style={{ color: "rgb(163, 145, 97)" }}>{Data.price}</h2>
-                        <Link to={`/shop/${slugify(Data.make)}`}>See more products from {Data.make}</Link>
-                        <Link to={`/shop/${slugify(Data.category)}`}>See other {Data.category}</Link>
-                        <h3>Description</h3>
-                        <p>{Data.description}</p>
-                        <StyledBtn href="https://www.hificorner.co.uk/ask-a-question">Ask a Question</StyledBtn>
-                        <StyledBtn href="https://www.hificorner.co.uk/part-exchange">Part Exchange</StyledBtn>
-                        <StyledBtn href="https://www.hificorner.co.uk/pay-by-finance">Pay by Finance</StyledBtn>
-                        <StyledBtn href="https://www.hificorner.co.uk/seen-a-better-price">Seen a Better Price?</StyledBtn>
-                    </div>
-                </main>
+                    </section>
+                    <section>
+                        <StyledinfoContainer>
+                            <div>
+                                <h1>{Data.model}</h1>
+                                <h2>{Data.make}</h2>
+                            </div>
+                            <StyledPrice>{Data.price}</StyledPrice>
+                        </StyledinfoContainer>
+                        <StyledLinkContainer>
+                            <Link to={`/shop/${slugify(Data.make)}`}>See more products from {Data.make}</Link>
+                            <Link to={`/shop/${slugify(Data.category)}`}>See other {Data.category}</Link>
+                        </StyledLinkContainer>
+                        <StyledDescriptionContainer>
+                            <h3>Description</h3>
+                            <p>{Data.description}</p>
+                        </StyledDescriptionContainer>
+                        <StyledBtnContainer >
+                            <StyledBtn href="https://www.hificorner.co.uk/ask-a-question">Ask a Question</StyledBtn>
+                            <StyledBtn href="https://www.hificorner.co.uk/part-exchange">Part Exchange</StyledBtn>
+                            <StyledBtn href="https://www.hificorner.co.uk/pay-by-finance">Pay by Finance</StyledBtn>
+                            <StyledBtn href="https://www.hificorner.co.uk/seen-a-better-price">Seen a Better Price?</StyledBtn>
+                        </StyledBtnContainer>
+                    </section>
+                </StyledMainContainer>
+                <Footer />
             </>
         )
     }
@@ -65,14 +77,79 @@ const Product = ({ sku }) => {
 export default Product
 
 
+const StyledinfoContainer = styled.div`
+    display: grid;
+    grid-template-columns: repeat(2, 1fr) 
+`
+
+
+const StyledMainContainer = styled.main`
+ @media (min-width: 400px) {
+    display: grid; 
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1rem;
+  }
+    > section {
+        padding: 1rem;
+        :first-child {
+            img {width: 300px; display: block; margin: 0 auto}
+        }
+        :last-child {
+            background-color: #f3f3f3;
+            h1 {
+                color: #706c71;
+            }
+        }
+    }
+`
+const StyledPrice = styled.h3`
+    color: rgb(163, 145, 97);
+    font-size: 2.5rem;
+
+    ::after {
+        content: ' kr.';
+        font-size: 1.5rem;
+        color: black;
+    }
+`
+
 const StyledBtn = styled.a`
     display: inline-block;
-    margin: .25rem; 
+    /* margin: 1rem .25rem .5rem 0;  */
     color: #fff ;
-    padding: 10px 5px;
+    padding: .75rem .5rem;
     background-color: #a39161;
     text-transform: uppercase;
     text-align: center;
-    font-size: 13px;
+    font-size: .8rem;
     white-space: nowrap;
+    :hover {
+        color: #706c71;
+    }
+`
+
+const StyledBtnContainer = styled.div`
+    margin: 1rem 0;
+    display: grid; 
+    grid-template-columns: repeat(2,1fr);
+    grid-gap: .5rem;
+`
+
+const StyledLinkContainer = styled.div`
+    margin: 1rem 0;
+    a {
+        display: block;
+        color: #a39161;
+    }
+`
+
+const StyledDescriptionContainer = styled.article`
+    margin: 1rem 0;
+    h3 {
+        color: #706c71;
+        font-weight: 600;
+        line-height: 1.1;
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+    }
 `

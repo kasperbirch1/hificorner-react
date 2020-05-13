@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 // import React, { useContext, useEffect } from 'react';
 // import { GlobalContext } from '../../context/GlobalState';
 import FooterSocialMediaIcons from './FooterSocialMediaIcons'
@@ -37,15 +37,8 @@ const StyledFooter = styled.footer`
 `
 
 const Footer = () => {
-    // const { transactions, getTransactions } = useContext(GlobalContext);
-    useEffect(() => {
-        // getTransactions();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
-
     return (
         <StyledFooter>
-            {/* {console.log("FOOTERFETCH", transactions)} */}
             <p>Hi Fi Corner (Edinburgh) Ltd is registered in Scotland</p>
             <div style={{ textAlign: 'center' }}>
                 <a href="/returns">Returns &amp; Refunds</a>
