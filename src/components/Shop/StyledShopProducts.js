@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-
 import slugify from 'react-slugify';
 
 // import placeholderImg from '../../images/product-placeholder.png'
@@ -9,7 +8,7 @@ import { ShopProduct } from './StyledShopProduct';
 const StyledShopProducts = styled.section`
     padding: 1rem;
     display: grid;
-    grid-template-columns: repeat( auto-fit, minmax(200px, 1fr) );
+    grid-template-columns: repeat( auto-fill, minmax(200px, 1fr) );
     grid-gap: 2rem 1rem;
 `;
 

@@ -6,7 +6,6 @@ import slugify from 'react-slugify';
 /* */
 const StyledShopNav = styled.nav`
     background-color: #f3f3f3;
-    outline: 1px dotted red;
     padding:  1rem;
     h3 {
         padding: 1.5rem 0 .25rem;

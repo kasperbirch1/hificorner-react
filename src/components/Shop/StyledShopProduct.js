@@ -43,6 +43,6 @@ export const ShopProduct = ({ img, make, model, price, sku }) => {
         <h2>{make}</h2>
         <h3>{model}</h3>
         <p>{price}</p>
-        <Link to={`../blog/${sku}`}>See more..</Link>
+        <Link to={`/product/${sku}`}>See more..</Link>
     </StyledShopProduct >);
 };

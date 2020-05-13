@@ -3,6 +3,7 @@ import { GlobalProvider } from './context/GlobalState';
 import { Router } from "@reach/router";
 import Home from './pages/Home'
 import Blog from './pages/Blog';
+import Product from './pages/Product';
 import About from './pages/About';
 import Categories from './pages/Categories';
 import Shop from './pages/Shop';
@@ -16,7 +17,7 @@ function App() {
         <Shop path="shop/:slug" />
         <Shop path="shop" />
         <Blog path="blog" />
-        <Blog path="blog/:sku" />
+        <Product path="product/:sku" />
         <About path="about" />
       </Router>
     </GlobalProvider>

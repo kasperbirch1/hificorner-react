@@ -50,7 +50,6 @@ function getUnique(arr) {
 }
 
 const StyledCategoriesInto = styled.section`
-    outline: 1px dotted red;
     display: grid;
     grid-template-columns: repeat( auto-fit, minmax(200px, 1fr) );
     grid-auto-rows: 200px;
